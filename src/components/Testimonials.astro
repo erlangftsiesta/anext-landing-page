@@ -1,0 +1,103 @@
+---
+---
+
+<section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24 relative">
+  <!-- Decorative gradient line -->
+  <div class="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/40 to-transparent"></div>
+
+  <!-- Heading -->
+  <div class="mb-12 md:mb-20" data-aos="fade-up" data-aos-duration="800">
+    <p
+      class="text-xs sm:text-sm font-medium uppercase tracking-widest mb-4
+             bg-gradient-to-b from-primary to-secondary bg-clip-text text-transparent"
+    >
+      Social Proof
+    </p>
+
+    <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold bg-gradient-to-b from-primary to-secondary bg-clip-text text-transparent">
+      What our clients say
+    </h2>
+  </div>
+
+  <!-- Testimonials -->
+  <div class="space-y-4 sm:space-y-6 md:space-y-8">
+    {[
+      {
+        quote:
+          "ANEXT helped us modernize our systems with clarity and speed. Their engineering-first approach meant we got reliable, scalable solutions.",
+        author: "CTO, Financial Services",
+      },
+      {
+        quote:
+          "Working with ANEXT felt like having a trusted technical partner, not a vendor. They understood our long-term vision and built accordingly.",
+        author: "Director of Engineering, Enterprise SaaS",
+      },
+      {
+        quote:
+          "Their security expertise and infrastructure knowledge gave us confidence in our systems. That's what matters for us.",
+        author: "VP Operations, Healthcare Tech",
+      },
+    ].map((testimonial, idx) => (
+      <blockquote
+        class="group relative p-4 mb-8 sm:p-6 md:p-8 lg:p-10 rounded-xl sm:rounded-2xl border border-slate-200
+               bg-gradient-to-br from-white to-slate-50
+               hover:border-primary/40 hover:from-primary/5 hover:to-secondary/5
+               transition-all duration-500 transform hover:scale-[1.03] hover:shadow-2xl"
+        data-aos="fade-up"
+        data-aos-duration="600"
+        data-aos-delay={`${idx * 100}`}
+      >
+        <!-- Quote icon -->
+        <div
+          class="absolute -top-3 sm:-top-6 left-4 sm:left-8 text-4xl sm:text-6xl
+                 text-primary/20 group-hover:text-secondary/40
+                 transition-all duration-300 transform group-hover:scale-125 group-hover:-translate-y-2"
+        >
+          "
+        </div>
+
+        <!-- Quote text -->
+        <p
+          class="text-base sm:text-lg md:text-xl text-slate-700 mb-4 sm:mb-6 leading-relaxed
+                 relative z-10 group-hover:text-slate-900 transition-colors duration-300"
+        >
+          {testimonial.quote}
+        </p>
+
+        <!-- Author -->
+        <div class="flex items-center gap-3 sm:gap-4">
+          <div
+            class="h-1 w-8 sm:w-12 bg-gradient-to-r from-primary to-secondary rounded-full
+                   group-hover:w-12 sm:group-hover:w-16 transition-all duration-300"
+          ></div>
+
+          <footer
+            class="text-xs sm:text-sm text-slate-600 font-medium
+                   group-hover:text-secondary transition-colors duration-300"
+          >
+            — {testimonial.author}
+          </footer>
+        </div>
+
+        <!-- Soft glow -->
+        <div
+          class="absolute inset-0 rounded-xl sm:rounded-2xl opacity-0 group-hover:opacity-100
+                 transition-opacity duration-500 shadow-2xl shadow-primary/10 pointer-events-none"
+        ></div>
+      </blockquote>
+    ))}
+  </div>
+</section>
+
+<style>
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(40px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+</style>

@@ -1,0 +1,88 @@
+---
+---
+
+<section id="process" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24 relative">
+  <!-- Decorative gradient line -->
+  <div class="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-cyan-400/30 to-transparent"></div>
+
+  <!-- Responsive heading -->
+  <div class="mb-12 md:mb-20" data-aos="fade-up" data-aos-duration="800">
+    <p class="text-secondary text-xs sm:text-sm font-medium uppercase tracking-widest mb-4">Our Methodology</p>
+    <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold bg-gradient-to-b from-primary to-secondary bg-clip-text text-transparent">
+      From architecture to execution
+    </h2>
+  </div>
+
+  <!-- Timeline wrapper -->
+  <div class="relative">
+    <!-- Animated connecting line - hidden on mobile -->
+    <svg class="hidden md:block absolute top-20 left-0 w-full h-24 pointer-events-none" viewBox="0 0 1200 100" preserveAspectRatio="xMidYMid meet">
+      <line x1="0" y1="50" x2="1200" y2="50" stroke="url(#timelineGradient)" stroke-width="2" stroke-dasharray="5,5" class="animate-shimmer" opacity="0.6"/>
+      <defs>
+        <linearGradient id="timelineGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" style="stop-color:rgba(6,182,212,0);stop-opacity:0" />
+          <stop offset="50%" style="stop-color:#0f2a74;stop-opacity:1" />
+          <stop offset="100%" style="stop-color:rgba(6,182,212,0);stop-opacity:0" />
+        </linearGradient>
+      </defs>
+    </svg>
+
+    <!-- Responsive grid - 1 col on mobile, 5 on desktop -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-6 md:gap-8 pt-8 md:pt-12 relative z-10">
+      {[
+        { num: "01", title: "Discovery", desc: "Business goals and technical needs" },
+        { num: "02", title: "Architecture", desc: "System design and scalability planning" },
+        { num: "03", title: "Development", desc: "Clean, maintainable implementation" },
+        { num: "04", title: "Testing", desc: "Reliability and security validation" },
+        { num: "05", title: "Deployment & Support", desc: "Stable release and long-term support" }
+      ].map((step, idx) => (
+        <div 
+          class="group text-center transform transition-all duration-500 hover:scale-110"
+          data-aos="fade-up"
+          data-aos-duration="600"
+          data-aos-delay={`${idx * 100}`}
+        >
+          <!-- Glowing number circle -->
+          <div class="relative mb-4 sm:mb-6 inline-block">
+            <div class="absolute inset-0 bg-gradient-to-br from-secondary/30 to-blue-500/20 rounded-full blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+            
+            <!-- Responsive circle size -->
+            <div class="relative w-20 h-20 sm:w-24 sm:h-24 rounded-full bg-gradient-to-br from-slate-100 to-slate-50 border-2 border-slate-200 group-hover:border-secondary group-hover:shadow-lg group-hover:shadow-secondary/50 flex items-center justify-center transition-all duration-300 transform group-hover:scale-125">
+              <span class="text-2xl sm:text-4xl font-bold text-slate-400 group-hover:text-secondary transition-colors duration-300">{step.num}</span>
+            </div>
+          </div>
+          
+          <h3 class="font-semibold text-lg sm:text-xl mb-2 sm:mb-3 text-slate-900 group-hover:text-secondary transition-colors duration-300">
+            {step.title}
+          </h3>
+          
+          <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
+            {step.desc}
+          </p>
+
+          <!-- Animated check mark -->
+          <div class="mt-4 sm:mt-6 h-6 flex items-center justify-center opacity-0 group-hover:opacity-100 transform scale-0 group-hover:scale-100 transition-all duration-500">
+            <svg class="w-6 h-6 text-secondary animate-pulse" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+            </svg>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  @keyframes shimmer {
+    0% {
+      stroke-dashoffset: 10;
+    }
+    100% {
+      stroke-dashoffset: 0;
+    }
+  }
+
+  .animate-shimmer {
+    animation: shimmer 3s linear infinite;
+  }
+</style>

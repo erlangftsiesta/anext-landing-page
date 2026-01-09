@@ -1,0 +1,89 @@
+---
+---
+
+<footer class="relative bg-gradient-to-b from-slate-900 to-slate-950 text-white border-t border-slate-700 overflow-hidden">
+  <!-- Animated background gradient -->
+  <div class="absolute inset-0 opacity-20">
+    <div class="absolute top-0 left-1/4 w-64 sm:w-96 h-64 sm:h-96 bg-cyan-500/20 rounded-full blur-3xl animate-pulse"></div>
+    <div class="absolute bottom-0 right-1/4 w-64 sm:w-96 h-64 sm:h-96 bg-blue-500/10 rounded-full blur-3xl"></div>
+  </div>
+
+  <!-- Decorative top line -->
+  <div class="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-cyan-400/50 to-transparent"></div>
+
+  <!-- Responsive footer layout -->
+  <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 md:py-24">
+    <!-- Responsive grid - 2 cols on mobile, 4 on desktop -->
+    <div class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8 md:gap-12 mb-12 md:mb-16">
+      {[
+        {
+          title: "Products",
+          links: ["Services", "Technology", "Case Studies"]
+        },
+        {
+          title: "Company",
+          links: ["About", "Blog", "Careers"]
+        },
+        {
+          title: "Resources",
+          links: ["Documentation", "Support", "Contact"]
+        },
+        {
+          title: "Legal",
+          links: ["Privacy", "Terms", "Security"]
+        }
+      ].map((section, idx) => (
+        <div class="space-y-4" data-aos="fade-up" data-aos-duration="600" data-aos-delay={`${idx * 100}`}>
+          <h3 class="font-semibold text-base sm:text-lg text-white mb-4 sm:mb-6 relative inline-block">
+            {section.title}
+            <span class="absolute bottom-0 left-0 w-0 h-1 bg-gradient-to-r from-cyan-400 to-transparent group-hover:w-full transition-all duration-300"></span>
+          </h3>
+          
+          <ul class="space-y-2 sm:space-y-3">
+            {section.links.map((link) => (
+              <li>
+                <a 
+                  href="#" 
+                  class="text-slate-400 hover:text-cyan-400 transition-colors duration-300 relative group text-xs sm:text-sm"
+                >
+                  <span class="relative">
+                    {link}
+                    <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-cyan-400 group-hover:w-full transition-all duration-300"></span>
+                  </span>
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))}
+    </div>
+
+    <!-- Footer bottom -->
+    <div class="border-t border-slate-700/50 pt-8 sm:pt-12 md:pt-16 relative">
+      <!-- Animated bottom glow -->
+      <div class="absolute -bottom-20 left-1/2 transform -translate-x-1/2 w-full h-40 bg-gradient-to-t from-cyan-500/10 to-transparent blur-2xl"></div>
+
+      <!-- Responsive footer bottom layout -->
+      <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6 sm:gap-8 relative z-10">
+        <p class="text-xs sm:text-sm text-slate-400" data-aos="fade-up" data-aos-duration="600">
+          © 2026 ANEXT. Engineering for the long run.
+        </p>
+        
+        <div class="flex gap-4 sm:gap-6">
+          {["Twitter", "LinkedIn", "GitHub"].map((social, idx) => (
+            <a 
+              href="#"
+              class="group text-slate-400 hover:text-cyan-400 transition-all duration-300 relative"
+              data-aos="fade-up"
+              data-aos-duration="600"
+              data-aos-delay={`${idx * 100}`}
+            >
+              <span class="text-xs sm:text-sm font-medium">{social}</span>
+              <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-cyan-400 group-hover:w-full transition-all duration-300"></span>
+            </a>
+          ))}
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>

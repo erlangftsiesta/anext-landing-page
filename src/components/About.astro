@@ -1,0 +1,101 @@
+---
+---
+
+<section id="about" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24 relative">
+  <!-- Decorative gradient line -->
+  <div class="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/40 to-transparent"></div>
+
+  <!-- Heading -->
+  <div class="mb-12 md:mb-20" data-aos="fade-up" data-aos-duration="800">
+    <p
+      class="text-xs sm:text-sm font-medium uppercase tracking-widest mb-4
+             bg-gradient-to-b from-primary to-secondary bg-clip-text text-transparent"
+    >
+      Our Story
+    </p>
+
+    <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold bg-gradient-to-b from-primary to-secondary bg-clip-text text-transparent">
+      Why ANEXT exists
+    </h2>
+
+    <p class="text-base sm:text-lg md:text-xl text-slate-600 max-w-2xl">
+      We build long-lasting systems and long-term partnerships.
+    </p>
+  </div>
+
+  <div class="space-y-6 md:space-y-8 relative">
+    <!-- Timeline line (desktop only) -->
+    <div
+      class="absolute left-0 md:left-12 top-0 bottom-0 w-1 rounded-full hidden md:block
+             bg-gradient-to-b from-primary via-secondary/60 to-transparent"
+    ></div>
+
+    {[
+      { year: "2020", title: "Company founded with senior engineering team", desc: "Building on years of industry experience" },
+      { year: "2021", title: "First enterprise infrastructure projects", desc: "Scaling complex systems for enterprise clients" },
+      { year: "2022", title: "Expansion into application platforms", desc: "Full-stack development for modern businesses" },
+      { year: "2023", title: "Security and cloud specialization", desc: "Enterprise-grade security and infrastructure" },
+      { year: "2024", title: "Scaling long-term technology partnerships", desc: "Trusted partner for digital transformation" },
+    ].map((item, idx) => (
+      <div
+        class="group pl-6 md:pl-32 relative"
+        data-aos="fade-up"
+        data-aos-duration="600"
+        data-aos-delay={`${idx * 100}`}
+      >
+        <!-- Timeline dot -->
+        <div
+          class="absolute left-0 md:left-6 top-2 w-4 h-4 md:w-6 md:h-6 bg-white border-4 rounded-full
+                 border-primary group-hover:border-secondary
+                 transform group-hover:scale-125 transition-all duration-300
+                 group-hover:shadow-lg group-hover:shadow-primary/30"
+        ></div>
+
+        <!-- Content card -->
+        <div
+          class="relative p-4 sm:p-6 md:p-8 mb-8 rounded-xl sm:rounded-2xl border border-slate-200 bg-white
+                 transition-all duration-500 transform group-hover:scale-[1.03] group-hover:shadow-2xl
+                 group-hover:border-primary/40
+                 group-hover:bg-gradient-to-br group-hover:from-primary/5 group-hover:to-secondary/5"
+        >
+          <div class="flex flex-col sm:flex-row sm:items-baseline sm:gap-4 md:gap-8 mb-3 sm:mb-4">
+            <p class="text-2xl sm:text-3xl font-bold text-secondary min-w-fit">
+              {item.year}
+            </p>
+
+            <h3
+              class="text-lg sm:text-xl md:text-2xl font-semibold text-slate-900 mt-2 sm:mt-0
+                     group-hover:text-secondary transition-colors duration-300"
+            >
+              {item.title}
+            </h3>
+          </div>
+
+          <p class="text-sm sm:text-base md:text-lg text-slate-600 leading-relaxed">
+            {item.desc}
+          </p>
+
+          <!-- Decorative accent -->
+          <div
+            class="absolute top-4 right-4 w-1 h-6 sm:h-8 rounded-full
+                   bg-gradient-to-b from-primary to-secondary
+                   opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+          ></div>
+        </div>
+      </div>
+    ))}
+  </div>
+</section>
+
+<style>
+  @keyframes fadeInLeft {
+    from {
+      opacity: 0;
+      transform: translateX(-40px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+</style>

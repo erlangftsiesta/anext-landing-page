@@ -1,0 +1,98 @@
+---
+import '../styles/global.css';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+const { title = 'ANEXT' } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+    <!-- Added AOS (Animate On Scroll) library for scroll-triggered animations -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css" />
+  </head>
+  <body class="bg-white text-slate-900">
+    <Header />
+    <main>
+      <slot />
+    </main>
+    <Footer />
+    
+    <!-- Initialize AOS for scroll animations -->
+    <script>
+      import AOS from 'aos';
+      
+      AOS.init({
+        duration: 800,
+        easing: 'ease-out-quad',
+        once: false,
+        offset: 100,
+        delay: 0,
+      });
+    </script>
+  </body>
+</html>
+
+<style is:global>
+  :root {
+    --primary: #0f172a;
+    --secondary: #0369a1;
+    --accent: #06b6d4;
+    --neutral-light: #f8fafc;
+    --neutral-dark: #1e293b;
+  }
+
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    color: var(--neutral-dark);
+    background: white;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-weight: 700;
+    letter-spacing: -0.02em;
+  }
+
+  h1 {
+    font-size: clamp(2.5rem, 8vw, 4rem);
+    line-height: 1.1;
+  }
+
+  h2 {
+    font-size: clamp(1.875rem, 5vw, 2.5rem);
+    line-height: 1.2;
+  }
+
+  h3 {
+    font-size: 1.5rem;
+  }
+
+  p {
+    line-height: 1.6;
+    color: #64748b;
+  }
+
+  a {
+    color: var(--accent);
+    text-decoration: none;
+    transition: all 0.3s ease;
+  }
+
+  .divider-subtle {
+    border-top: 1px solid #e2e8f0;
+  }
+</style>

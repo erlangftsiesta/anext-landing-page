@@ -1,0 +1,125 @@
+---
+---
+
+<section
+  id="contact"
+  class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24 text-center relative overflow-hidden"
+>
+  <!-- Animated background elements -->
+  <div class="absolute inset-0 -z-10">
+    <div
+      class="absolute top-20 left-10 w-48 sm:w-64 h-48 sm:h-64 rounded-full blur-3xl animate-pulse
+             bg-primary/20"
+    ></div>
+    <div
+      class="absolute bottom-10 right-10 w-56 sm:w-80 h-56 sm:h-80 rounded-full blur-3xl animate-float
+             bg-secondary/15"
+      style="animation-delay: 1s"
+    ></div>
+  </div>
+
+  <!-- Decorative top line -->
+  <div class="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/40 to-transparent"></div>
+
+  <!-- Content -->
+  <div class="space-y-6 md:space-y-8" data-aos="fade-up" data-aos-duration="800">
+    <p
+      class="text-xs sm:text-sm font-medium uppercase tracking-widest
+             bg-gradient-to-b from-primary to-secondary bg-clip-text text-transparent"
+      data-aos="fade-up"
+      data-aos-delay="100"
+    >
+      Ready to get started?
+    </p>
+
+    <h2
+      class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold bg-gradient-to-b from-primary to-secondary bg-clip-text text-transparent leading-tight"
+      data-aos="fade-up"
+      data-aos-delay="150"
+    >
+      Let's build what matters.
+    </h2>
+
+    <p
+      class="text-base sm:text-lg md:text-xl lg:text-2xl text-slate-600 max-w-2xl mx-auto leading-relaxed"
+      data-aos="fade-up"
+      data-aos-delay="200"
+    >
+      Talk with our engineering team about your next system.
+    </p>
+
+    <!-- CTA buttons -->
+    <div
+      class="flex flex-col sm:flex-row gap-3 sm:gap-4 md:gap-6 justify-center pt-4 md:pt-8"
+      data-aos="fade-up"
+      data-aos-delay="250"
+    >
+      <!-- Primary CTA -->
+      <button
+        class="group relative px-6 sm:px-10 py-3 sm:py-5 rounded-lg sm:rounded-xl overflow-hidden
+               bg-gradient-to-r from-primary to-secondary text-white font-bold
+               text-sm sm:text-base lg:text-lg transition-all duration-300
+               hover:shadow-2xl hover:shadow-primary/40 transform hover:scale-105 hover:-translate-y-1"
+      >
+        <span class="relative z-10">Schedule a Call</span>
+
+        <div
+          class="absolute inset-0 bg-gradient-to-r from-secondary to-primary
+                 scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-300"
+        ></div>
+
+        <div
+          class="absolute -inset-1 rounded-lg sm:rounded-xl blur-lg opacity-0 group-hover:opacity-100
+                 bg-gradient-to-r from-primary/40 to-secondary/40 transition-opacity duration-300"
+        ></div>
+      </button>
+
+      <!-- Secondary CTA -->
+      <button
+        class="group relative px-6 sm:px-10 py-3 sm:py-5 rounded-lg sm:rounded-xl
+               border border-primary text-primary font-bold
+               text-sm sm:text-base lg:text-lg transition-all duration-300
+               hover:bg-primary/5 hover:shadow-xl transform hover:scale-105"
+      >
+        <span class="relative z-10">Send a Message</span>
+
+        <div
+          class="absolute inset-0 rounded-lg sm:rounded-xl opacity-0 group-hover:opacity-100
+                 shadow-lg shadow-secondary/30 transition-opacity duration-300"
+        ></div>
+      </button>
+    </div>
+
+    <!-- Email -->
+    <div class="pt-6 md:pt-12" data-aos="fade-up" data-aos-delay="300">
+      <p class="text-xs sm:text-sm text-slate-500 animate-pulse">
+        Or reach out directly at
+        <span class="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent font-semibold">
+          hello@anext.dev
+        </span>
+      </p>
+    </div>
+  </div>
+
+  <!-- Decorative bottom glow -->
+  <div
+    class="absolute -bottom-32 left-1/2 transform -translate-x-1/2
+           w-64 sm:w-96 h-64 sm:h-96 rounded-full blur-3xl opacity-50
+           bg-gradient-to-t from-secondary/20 to-transparent"
+  ></div>
+</section>
+
+<style>
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-30px);
+    }
+  }
+
+  .animate-float {
+    animation: float 8s ease-in-out infinite;
+  }
+</style>

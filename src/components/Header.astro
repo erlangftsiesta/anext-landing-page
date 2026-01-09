@@ -1,0 +1,135 @@
+---
+const logoSrc = "/images/anext-logo-only.webp";
+---
+
+<header class="sticky top-0 z-50 bg-white/70 backdrop-blur-xl border-b border-gray-100/50 shadow-sm transition-all duration-300">
+  <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between">
+    <!-- Logo + Text -->
+    <a href="/" class="hidden md:flex items-center gap-3 group">
+      <span class="text-2xl font-black tracking-tight bg-gradient-to-b from text-primary to text-secondary bg-clip-text text-transparent">
+        ANEXT
+      </span>
+    </a>
+
+    <!-- Desktop Navigation -->
+    <div class="hidden md:flex items-center gap-10">
+      <a href="#services" class="nav-link">Services</a>
+      <a href="#process" class="nav-link">Process</a>
+      <a href="#about" class="nav-link">About</a>
+      <a href="#contact" class="nav-link">Contact</a>
+    </div>
+
+    <!-- CTA Button -->
+      <img 
+        src={logoSrc} 
+        alt="ANEXT" 
+        class="h-9 w-9 object-contain transition-transform duration-300 group-hover:scale-110"
+      />
+
+    <!-- Mobile Menu Button -->
+    <button 
+      id="mobile-menu-btn" 
+      class="md:hidden p-2 rounded-full hover:bg-gray-100/80 transition-colors"
+      aria-label="Toggle menu"
+    >
+      <svg class="w-6 h-6 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" id="menu-icon"></path>
+      </svg>
+    </button>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div id="mobile-menu" class="hidden md:hidden bg-white/95 backdrop-blur-lg border-t border-gray-100 shadow-xl">
+    <div class="max-w-7xl mx-auto px-4 py-6 space-y-2">
+      <a href="#services" class="mobile-link">Services</a>
+      <a href="#process" class="mobile-link">Process</a>
+      <a href="#about" class="mobile-link">About</a>
+      <a href="#contact" class="mobile-link">Contact</a>
+    </div>
+  </div>
+</header>
+
+<script>
+  const mobileBtn = document.getElementById('mobile-menu-btn');
+  const mobileMenu = document.getElementById('mobile-menu');
+  const menuIcon = document.getElementById('menu-icon');
+
+  if (mobileBtn && mobileMenu) {
+    mobileBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+      
+      // Animate hamburger to X
+      if (mobileMenu.classList.contains('hidden')) {
+        menuIcon?.setAttribute('d', 'M4 6h16M4 12h16M4 18h16');
+      } else {
+        menuIcon?.setAttribute('d', 'M6 18L18 6M6 6l12 12');
+      }
+    });
+
+    // Close when click link
+    document.querySelectorAll('#mobile-menu a').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.add('hidden');
+        menuIcon?.setAttribute('d', 'M4 6h16M4 12h16M4 18h16');
+      });
+    });
+  }
+</script>
+
+<style>
+  .nav-link {
+    position: relative;
+    color: #4b5563;
+    font-weight: 500;
+    transition: color 0.3s ease;
+  }
+
+  .nav-link::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -6px;
+    left: 0;
+    background: linear-gradient(to bottom, #020b1f, #0f2a74);
+    transition: width 0.3s ease;
+  }
+
+  .nav-link:hover {
+    color: #0f2a74;
+  }
+
+  .nav-link:hover::after {
+    width: 100%;
+  }
+
+  .mobile-link {
+    display: block;
+    padding: 0.75rem 1rem;
+    color: #374151;
+    font-weight: 500;
+    border-radius: 0.5rem;
+    transition: all 0.3s ease;
+  }
+
+  .mobile-link:hover {
+    background-color: #ffffff;
+    color: #0f2a74;
+    transform: translateX(6px);
+  }
+
+  header {
+    animation: fadeInDown 0.8s ease-out;
+  }
+
+  @keyframes fadeInDown {
+    from {
+      opacity: 0;
+      transform: translateY(-30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+</style>

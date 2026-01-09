@@ -1,0 +1,109 @@
+---
+---
+
+<section id="services" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24 relative">
+  <!-- Decorative gradient line -->
+  <div class="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/40 to-transparent"></div>
+
+  <!-- Heading -->
+  <div class="mb-12 md:mb-20" data-aos="fade-up" data-aos-duration="800">
+    <div class="inline-block">
+      <p
+        class="text-xs sm:text-sm font-medium uppercase tracking-widest mb-4
+               bg-gradient-to-b from-primary to-secondary bg-clip-text text-transparent"
+      >
+        Our Services
+      </p>
+    </div>
+
+    <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 md:mb-6 text-secondary text-balance">
+      What we specialize in
+    </h2>
+
+    <p class="text-base sm:text-lg md:text-xl text-slate-600 max-w-2xl">
+      Engineering solutions built for performance, security, and scale.
+    </p>
+  </div>
+
+  <!-- Services grid -->
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 relative z-10 gap-4 sm:gap-5 md:gap-6 py-8 md:py-10">
+    {[
+      { title: "Developer Outsourcing", desc: "Get access to trusted developers who integrate seamlessly with your projects, helping you scale quickly with high-quality results.", icon: "💻" },
+      { title: "Website & Web Systems", desc: "Custom websites, dashboards, and internal tools built with modern technologies.", icon: "🌐" },
+      { title: "Mobile & Web Apps", desc: "Scalable mobile and web applications that drive user engagement and business growth.", icon: "📱" },
+      { title: "Cyber Security", desc: "Security assessment, penetration testing, and comprehensive mitigation strategies.", icon: "🔒" },
+      { title: "IoT Solutions", desc: "Device integration, telemetry, and intelligent data pipelines for connected systems.", icon: "🔌" },
+      { title: "Infrastructure", desc: "Server planning, setup, and optimization for enterprise-scale reliability.", icon: "🏗️" },
+      { title: "Cloud & DevOps", desc: "Modern cloud architecture and DevOps practices for scalable deployments.", icon: "☁️" },
+      { title: "Technical Consulting", desc: "Architecture review and long-term IT strategy for digital transformation.", icon: "💼" },
+    ].map((service, idx) => (
+      <div
+        class="flex flex-col lg:border-r lg:border-b py-4 sm:py-5 md:py-6 px-3 sm:px-4 relative group
+               border-slate-200 dark:border-neutral-800"
+        data-aos="fade-up"
+        data-aos-duration="600"
+        data-aos-delay={`${idx * 50}`}
+      >
+        <!-- Hover background overlay -->
+        <div
+          class="opacity-0 group-hover:opacity-100 transition duration-300 absolute inset-0 h-full w-full
+                 bg-gradient-to-t from-secondary/5 to-transparent pointer-events-none"
+        ></div>
+
+        <!-- Icon -->
+        <div
+          class="mb-3 sm:mb-4 relative z-10 text-3xl sm:text-4xl
+                 transform group-hover:scale-125 transition-transform duration-300"
+        >
+          {service.icon}
+        </div>
+
+        <!-- Title -->
+        <div class="text-base sm:text-lg font-bold mb-2 sm:mb-3 relative z-10">
+          <div
+            class="absolute left-0 inset-y-0 h-6 group-hover:h-8 w-1 rounded-tr-full rounded-br-full
+                   bg-slate-300 group-hover:bg-gradient-to-b group-hover:from-primary group-hover:to-secondary
+                   transition-all duration-300 origin-center"
+          ></div>
+
+          <span
+            class="group-hover:translate-x-2 transition duration-300 inline-block text-slate-800 ml-3"
+          >
+            {service.title}
+          </span>
+        </div>
+
+        <!-- Description -->
+        <p class="text-xs sm:text-sm text-slate-600 max-w-xs relative z-10">
+          {service.desc}
+        </p>
+
+        <!-- Arrow -->
+        <div
+          class="pt-3 sm:pt-4 inline-flex items-center gap-2 font-medium text-sm
+                 opacity-0 group-hover:opacity-100 transform group-hover:translate-x-2
+                 transition-all duration-300 relative z-10
+                 bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent"
+        >
+          Learn more
+          <svg class="w-4 h-4 text-secondary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+          </svg>
+        </div>
+      </div>
+    ))}
+  </div>
+</section>
+
+<style>
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(40px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+</style>
