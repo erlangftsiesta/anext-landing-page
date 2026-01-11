@@ -1,13 +1,43 @@
 ---
+const partners = [
+  {
+    name: "PT. International Leather Works",
+    src: "/images/partnership/partner-ilw.png",
+  },
+  { name: "SynchronizeTeams", src: "/images/partnership/partner-syncteam.png" },
+  { name: "Devaccto RPL", src: "/images/partnership/partner-devacctorpl.png" },
+  {
+    name: "Maxwell Chemicals",
+    src: "/images/partnership/partner-maxwellchemicals.png",
+  },
+  {
+    name: "Sarana Nusa Pakan",
+    src: "/images/partnership/partner-sarananusapakan.png",
+  },
+];
+
+const chunk = (arr: any, size: any) =>
+  Array.from({ length: Math.ceil(arr.length / size) }, (_, i) =>
+    arr.slice(i * size, i * size + size)
+  );
+
+const rows = chunk(partners, 5);
 ---
 
 <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24 relative">
   <!-- Subtle top gradient line -->
-  <div class="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/50 to-transparent"></div>
+  <div
+    class="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/50 to-transparent"
+  >
+  </div>
 
   <div class="space-y-8 md:space-y-12">
     <!-- Heading -->
-    <div class="text-center space-y-4 animate-fadeInUp" data-aos="fade-up" data-aos-duration="800">
+    <div
+      class="text-center space-y-4 animate-fadeInUp"
+      data-aos="fade-up"
+      data-aos-duration="800"
+    >
       <p
         class="text-center text-xs sm:text-sm font-medium mb-4 uppercase tracking-widest
                bg-gradient-to-b from-primary to-secondary bg-clip-text text-transparent"
@@ -15,37 +45,38 @@
         Trusted Partners
       </p>
 
-<h2 class="text-3xl sm:text-4xl md:text-5xl font-bold text-balance bg-gradient-to-b from-primary to-secondary bg-clip-text text-transparent">
-  Trusted by teams across industries
-</h2>
+      <h2
+        class="text-3xl sm:text-4xl md:text-5xl font-bold text-balance bg-gradient-to-b from-primary to-secondary bg-clip-text text-transparent"
+      >
+        Trusted by teams across industries
+      </h2>
     </div>
 
     <!-- Logos grid -->
-    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3 sm:gap-4 md:gap-6 lg:gap-8 mt-8">
-      {[1, 2, 3, 4, 5].map((i) => (
-        <div
-          class="group"
-          style={`animation: fadeInUp 0.8s ease-out ${i * 0.1}s both`}
-          data-aos="fade-up"
-          data-aos-duration="600"
-          data-aos-delay={`${i * 100}`}
-        >
-          <div
-            class="h-16 sm:h-20 bg-gradient-to-br from-slate-100 to-slate-200 rounded-lg sm:rounded-xl
-                   flex items-center justify-center text-slate-600 font-bold text-sm sm:text-lg
-                   transition-all duration-300 transform hover:scale-110 hover:shadow-xl
-                   hover:from-primary/10 hover:to-secondary/10 cursor-pointer relative overflow-hidden"
-          >
-            <!-- Hover gradient overlay -->
+    <div
+      class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3 sm:gap-4 md:gap-6 lg:gap-8 mt-8"
+    >
+      {
+        partners.map((p, i) => (
+          <div class="group" data-aos="fade-up" data-aos-delay={`${i * 100}`}>
             <div
-              class="absolute inset-0 bg-gradient-to-b from-primary/0 to-secondary/0
-                     group-hover:from-primary/10 group-hover:to-secondary/20 transition-all duration-300"
-            ></div>
+              class="h-24 sm:h-28 bg-gradient-to-br from-slate-100 to-slate-200 rounded-xl
+         flex flex-col items-center justify-center gap-2
+         hover:scale-110 transition relative overflow-hidden"
+            >
+              <img
+                src={p.src}
+                alt={p.name}
+                class="relative z-10 h-8 sm:h-10 object-contain grayscale group-hover:grayscale-0 transition"
+              />
 
-            <span class="relative z-10">Logo {i}</span>
+              <p class="text-[10px] sm:text-xs text-slate-500 font-medium tracking-wide">
+                {p.name}
+              </p>
+            </div>
           </div>
-        </div>
-      ))}
+        ))
+      }
     </div>
   </div>
 </section>

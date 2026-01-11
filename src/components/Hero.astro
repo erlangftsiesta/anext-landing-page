@@ -3,125 +3,130 @@ const logoSrc = "/images/anext-logo-only.webp";
 const gridSrc = "/images/1.png"; // sesuaikan extension kalau perlu (.png / .svg / .webp)
 ---
 
-<section class="relative min-h-screen overflow-hidden bg-white flex items-center">
+<section
+  class="relative min-h-screen overflow-hidden bg-white flex items-center"
+>
   <!-- Background subtle grid -->
   <div class="absolute inset-0 opacity-[0.035] pointer-events-none">
-    <img 
-      src={gridSrc} 
-      alt="" 
-      class="w-full h-full object-cover"
-    />
+    <img src={gridSrc} alt="" class="w-full h-full object-cover" />
   </div>
 
   <!-- Abstract lightning branches (lebih elegan da   ripada garis lurus) -->
   <div class="absolute inset-0 overflow-hidden opacity-40 pointer-events-none">
     <!-- SVG lightning path - bisa ditambah/dikurangin sesuai selera -->
-    <svg class="w-full h-full" viewBox="0 0 1200 800" preserveAspectRatio="none">
+    <svg
+      class="w-full h-full"
+      viewBox="0 0 1200 800"
+      preserveAspectRatio="none"
+    >
       <defs>
         <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
-          <feGaussianBlur stdDeviation="3.5" result="coloredBlur"/>
+          <feGaussianBlur stdDeviation="3.5" result="coloredBlur"
+          ></feGaussianBlur>
           <feMerge>
-            <feMergeNode in="coloredBlur"/>
-            <feMergeNode in="SourceGraphic"/>
+            <feMergeNode in="coloredBlur"></feMergeNode>
+            <feMergeNode in="SourceGraphic"></feMergeNode>
           </feMerge>
         </filter>
       </defs>
 
       <!-- Lightning paths dengan warna gradient subtle -->
-      <path 
-        d="M 200 100 L 320 180 L 280 240 L 410 310 L 360 390 L 480 460" 
-        stroke="url(#grad1)" 
-        stroke-width="2.5" 
-        fill="none" 
+      <path
+        d="M 200 100 L 320 180 L 280 240 L 410 310 L 360 390 L 480 460"
+        stroke="url(#grad1)"
+        stroke-width="2.5"
+        fill="none"
         filter="url(#glow)"
-        class="lightning lightning-1"
-      />
-      <path 
-        d="M 900 600 L 780 520 L 820 460 L 690 390 L 740 310 L 620 240" 
-        stroke="url(#grad2)" 
-        stroke-width="2" 
-        fill="none" 
+        class="lightning lightning-1"></path>
+      <path
+        d="M 900 600 L 780 520 L 820 460 L 690 390 L 740 310 L 620 240"
+        stroke="url(#grad2)"
+        stroke-width="2"
+        fill="none"
         filter="url(#glow)"
-        class="lightning lightning-2"
-      />
-      <path 
-        d="M 150 650 L 280 570 L 240 510 L 370 440 L 320 370 L 450 300" 
-        stroke="url(#grad3)" 
-        stroke-width="1.8" 
-        fill="none" 
+        class="lightning lightning-2"></path>
+      <path
+        d="M 150 650 L 280 570 L 240 510 L 370 440 L 320 370 L 450 300"
+        stroke="url(#grad3)"
+        stroke-width="1.8"
+        fill="none"
         filter="url(#glow)"
-        class="lightning lightning-3"
-      />
+        class="lightning lightning-3"></path>
 
       <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
-        <stop offset="0%" stop-color="#a78bfa" stop-opacity="0.7"/>
-        <stop offset="100%" stop-color="#c084fc" stop-opacity="0.3"/>
+        <stop offset="0%" stop-color="#a78bfa" stop-opacity="0.7"></stop>
+        <stop offset="100%" stop-color="#c084fc" stop-opacity="0.3"></stop>
       </linearGradient>
       <linearGradient id="grad2" x1="100%" y1="100%" x2="0%" y2="0%">
-        <stop offset="0%" stop-color="#f472b6" stop-opacity="0.6"/>
-        <stop offset="100%" stop-color="#f9a8d4" stop-opacity="0.25"/>
+        <stop offset="0%" stop-color="#f472b6" stop-opacity="0.6"></stop>
+        <stop offset="100%" stop-color="#f9a8d4" stop-opacity="0.25"></stop>
       </linearGradient>
       <linearGradient id="grad3" x1="0%" y1="100%" x2="100%" y2="0%">
-        <stop offset="0%" stop-color="#67e8f9" stop-opacity="0.5"/>
-        <stop offset="100%" stop-color="#a5f3fc" stop-opacity="0.2"/>
+        <stop offset="0%" stop-color="#67e8f9" stop-opacity="0.5"></stop>
+        <stop offset="100%" stop-color="#a5f3fc" stop-opacity="0.2"></stop>
       </linearGradient>
     </svg>
   </div>
 
   <!-- Hero Content -->
-  <div class="relative z-10 max-w-7xl mx-auto px-6 lg:px-12 py-20 flex items-center justify-center">
+  <div
+    class="relative z-10 max-w-7xl mx-auto px-6 lg:px-12 py-20 flex items-center justify-center"
+  >
     <div class="text-center max-w-4xl">
-
       <!-- Logo ANEXT -->
       <div class="mb-10" data-aos="zoom-in" data-aos-duration="1000">
-        <img 
-          src={logoSrc} 
-          alt="ANEXT Logo" 
+        <img
+          src={logoSrc}
+          alt="ANEXT Logo"
           class="mx-auto h-28 md:h-36 lg:h-44 w-auto object-contain drop-shadow-xl"
         />
       </div>
 
       <!-- Heading -->
-      <h1 
-        class="text-5xl md:text-7xl lg:text-8xl font-black mb-8 leading-tight tracking-tight"
-        data-aos="fade-up" 
-        data-aos-duration="900" 
+      <h1
+        class="text-3xl md:text-4xl lg:text-5xl leading-tight tracking-tight mb-8"
+        data-aos="fade-up"
+        data-aos-duration="900"
         data-aos-delay="200"
       >
-        <span class="bg-gradient-to-b from-primary to-secondary bg-clip-text text-transparent">
-          Engineering for the<br/>long run.
+        <span
+          class="bg-gradient-to-b from-primary to-secondary bg-clip-text text-transparent"
+        >
+          We exist to help your ideas grow into something<br />
+          <span class="font-black">real and reliable</span>.
         </span>
       </h1>
 
       <!-- Subheading -->
-      <p 
-        class="text-xl md:text-2xl text-gray-900 max-w-3xl mx-auto leading-relaxed font-medium mb-12"
-        data-aos="fade-up" 
-        data-aos-duration="900" 
+      <p
+        class="text-lg md:text-xl text-gray-900 max-w-3xl mx-auto leading-relaxed font-medium mb-12"
+        data-aos="fade-up"
+        data-aos-duration="900"
         data-aos-delay="400"
       >
-        Building systems that grow with you. ANEXT partners with businesses to design, build, and maintain 
-        reliable digital systems — from infrastructure to applications.
+        We build systems that grow with you. At ANEXT, we work closely with your
+        team, listening to your needs and supporting you every step of the way.
+        <br>from <span class="font-black">infrastructure</span> to  <span class="font-black">applications</span>.
       </p>
 
       <!-- CTA -->
-      <div 
+      <div
         class="flex flex-col sm:flex-row gap-6 justify-center items-center"
-        data-aos="fade-up" 
-        data-aos-duration="900" 
+        data-aos="fade-up"
+        data-aos-duration="900"
         data-aos-delay="600"
       >
-        <a 
-          href="#contact" 
+        <a
+          href="/teams"
           class="px-10 py-5 bg-gradient-to-b from-primary to-secondary text-white font-semibold rounded-full shadow-xl hover:shadow-2xl hover:scale-105 transition-all duration-300"
         >
           Talk to our Engineers
         </a>
-        <a 
-          href="/services" 
+        <a
+          href="/our-projects"
           class="px-10 py-5 border-2 border-text-primary text-blue-900 font-semibold rounded-full hover:bg-gradient-to-b from-primary to-secondary hover:text-white transition-all duration-300"
         >
-          Explore Services
+          Explore Things We Did
         </a>
       </div>
     </div>
@@ -129,18 +134,23 @@ const gridSrc = "/images/1.png"; // sesuaikan extension kalau perlu (.png / .svg
 </section>
 
 <style is:global>
-      
-  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
-    
+  @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap");
+
   .lightning {
     stroke-dasharray: 1000;
     stroke-dashoffset: 1000;
     animation: draw 8s ease-in-out infinite alternate;
   }
 
-  .lightning-1 { animation-delay: 0s; }
-  .lightning-2 { animation-delay: 2.5s; }
-  .lightning-3 { animation-delay: 5s; }
+  .lightning-1 {
+    animation-delay: 0s;
+  }
+  .lightning-2 {
+    animation-delay: 2.5s;
+  }
+  .lightning-3 {
+    animation-delay: 5s;
+  }
 
   @keyframes draw {
     to {
@@ -149,11 +159,18 @@ const gridSrc = "/images/1.png"; // sesuaikan extension kalau perlu (.png / .svg
   }
 
   @keyframes flicker {
-    0%, 100% { opacity: 0.35; }
-    50% { opacity: 0.7; }
+    0%,
+    100% {
+      opacity: 0.35;
+    }
+    50% {
+      opacity: 0.7;
+    }
   }
 
   .lightning {
-    animation: draw 8s ease-in-out infinite alternate, flicker 6s infinite;
+    animation:
+      draw 8s ease-in-out infinite alternate,
+      flicker 6s infinite;
   }
 </style>
