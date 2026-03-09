@@ -1,0 +1,156 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+import TeamIntro from '../components/teams/TeamIntro.astro';
+import type { ImageMetadata } from 'astro';
+import 'aos/dist/aos.css';
+
+import FarhanAditya_IMG from '../images/teams/farhan_aditya.png'
+import WysisHero_ImG from '../images/teams/wysis_hero.png'
+import NadhinGaluh_ImG from '../images/teams/nadhin_galuh.png'
+import MuhamadSatria from '../images/teams/muhamad_satria.png'
+import AdityaKurnia from '../images/teams/aditya_kurnia.png'
+import MuhammadArridho from '../images/teams/muhammad_arridho.png'
+interface TeamMember {
+  id: number;
+  name: string;
+  role: string;
+  image: ImageMetadata | string;
+  bio: string;
+}
+
+const teamMembers: TeamMember[] = [
+  {
+    id: 1,
+    name: 'Nadhin Galuh Ekania W.',
+    role: 'General Manager',
+    image: NadhinGaluh_ImG,
+    bio: 'Oversees company operations, team coordination, and strategic execution to ensure organizational goals are achieved efficiently.'
+  },
+  {
+    id: 2,
+    name: 'Erlangga Muhamad Hafiz',
+    role: 'CEO ANEXT',
+    image: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Sarah',
+    bio: 'Leading company vision, innovation strategy, and long-term growth of ANEXT through technology and digital transformation.'
+  },
+  {
+    id: 3,
+    name: 'Ratu Natifha Alena',
+    role: 'Head of Finance',
+    image: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Mike',
+    bio: 'Manages financial planning, budgeting, and reporting to maintain the company’s financial stability and sustainable growth.'
+  },
+  {
+    id: 4,
+    name: 'Ichwan Nur Fitrah',
+    role: 'Senior Software Engineer',
+    image: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Priya',
+    bio: 'Designs and develops scalable software systems while mentoring developers and ensuring high engineering standards.'
+  },
+  {
+    id: 5,
+    name: 'Aditya Kurnia',
+    role: 'Fullstack Engineer',
+    image: AdityaKurnia,
+    bio: 'Builds and maintains both frontend and backend systems to deliver reliable and high-performance web applications.'
+  },
+  {
+    id: 6,
+    name: 'Farhan Aditya',
+    role: 'UI/UX & QA',
+    image: FarhanAditya_IMG,
+    bio: 'Ensures intuitive user experiences while maintaining product quality through testing, usability evaluation, and design improvements.'
+  },
+  {
+    id: 7,
+    name: 'Wysis Hero',
+    role: 'Marketing',
+    image: WysisHero_ImG,
+    bio: 'Develops marketing strategies and campaigns to expand brand awareness and connect ANEXT with a wider audience.'
+  },
+  {
+    id: 8,
+    name: 'Muhamad Satria Mandala',
+    role: 'Content Editor',
+    image: MuhamadSatria,
+    bio: 'Creates and refines digital content to communicate the company’s message clearly across multiple platforms.'
+  },
+  {
+    id: 9,
+    name: 'Muhamad Arridho',
+    role: 'Social Media Admin',
+    image: MuhammadArridho,
+    bio: 'Manages social media platforms, engages with the audience, and ensures consistent brand presence online.'
+  }
+];
+---
+
+<MainLayout title="Our Team - ANEXT" description="Meet the talented team behind ANEXT engineering solutions"> 
+  <TeamIntro />
+
+        <!-- Section Header -->
+    <div class="text-center mb-20" data-aos="fade-up">
+    <h2 
+      class="text-3xl sm:text-4xl md:text-5xl font-bold bg-gradient-to-b from-primary to-secondary bg-clip-text text-transparent"
+      data-aos="fade-up" 
+      data-aos-duration="800"
+      data-aos-delay="100"
+    >This is Ours!</h2>
+      </div>
+  
+  <!-- Team Members Grid -->
+  <section class="py-16 md:py-24 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-12">
+        {teamMembers.map((member, index) => (
+          <div 
+            class="group" 
+            data-aos="fade-up" 
+            data-aos-delay={index * 100}
+          >
+            <!-- Image Container -->
+            <div class="relative overflow-hidden mb-6">
+            <img 
+              src={typeof member.image === "string" ? member.image : member.image.src}
+              alt={member.name} 
+              class="w-full h-64 sm:h-72 object-contain grayscale group-hover:grayscale-0 transition-all duration-500 group-hover:scale-105"
+            />
+              <div class="absolute inset-0 bg-cyan-500/0 group-hover:bg-cyan-500/5 transition-all duration-500"></div>
+            </div>
+            
+            <!-- Member Info -->
+            <div class="space-y-2">
+              <h3 class="text-lg md:text-xl font-bold text-slate-900">
+                {member.name}
+              </h3>
+              <p class="text-sm font-medium text-cyan-600 uppercase tracking-wide">
+                {member.role}
+              </p>
+              <p class="text-sm text-slate-600 leading-relaxed">
+                {member.bio}
+              </p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+</MainLayout>
+
+<style>
+  :global(body) {
+    background: white;
+  }
+</style>
+
+<script>
+  import AOS from 'aos';
+  
+  AOS.init({
+    duration: 800,
+    easing: 'ease-out-quad',
+    once: false,
+    offset: 100,
+  });
+</script>
