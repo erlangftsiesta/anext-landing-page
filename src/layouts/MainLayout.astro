@@ -1,98 +1,143 @@
 ---
 import '../styles/global.css';
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
 
-const { title = 'ANEXT' } = Astro.props;
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = "ANEXT - Connecting the Infinite | Engineering Solutions",
+  description = "We exist to help your ideas grow into something real and reliable. We build systems that grow with you, from infrastructure to applications."
+} = Astro.props;
+
+const gaId = import.meta.env.PUBLIC_GA_ID || "G-6XRN4DXQ09";
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="en" class="dark overflow-x-hidden w-full scroll-smooth">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{title}</title>
-    <!-- Added AOS (Animate On Scroll) library for scroll-triggered animations -->
-    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css" />
+    <meta name="description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="ANEXT" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content="/images/anext-logo-only.webp" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content="/images/anext-logo-only.webp" />
+    <link rel="icon" type="image/webp" href="/images/anext-logo-only.webp" />
+    <link rel="canonical" href={Astro.url.href} />
+    <meta name="robots" content="index, follow" />
+    <link rel="preload" as="image" href="/images/anext-logo-only.webp" type="image/webp" fetchpriority="high" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
+    <link
+      rel="preload"
+      as="style"
+      href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@200..800&family=Manrope:wght@200..800&display=optional"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@200..800&family=Manrope:wght@200..800&display=optional"
+      media="print"
+      onload="this.media='all'"
+    />
+    <noscript>
+      <link
+        rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@200..800&family=Manrope:wght@200..800&display=optional"
+      />
+    </noscript>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Corporation",
+        "name": "ANEXT",
+        "url": "https://anext.dev",
+        "logo": "https://anext.dev/images/anext-logo-only.webp",
+        "description": "We exist to help your ideas grow into something real and reliable. Modern infrastructure and engineering solutions built for scale."
+      }
+    </script>
+    <script is:inline define:vars={{ gaId }}>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      function initGtag() {
+        if (window._gtagLoaded) return;
+        window._gtagLoaded = true;
+        const s = document.createElement('script');
+        s.async = true;
+        s.src = 'https://www.googletagmanager.com/gtag/js?id=' + gaId;
+        document.head.appendChild(s);
+        gtag('js', new Date());
+        gtag('config', gaId);
+      }
+      function triggerGtag() {
+        initGtag();
+        window.removeEventListener('scroll', triggerGtag);
+        window.removeEventListener('click', triggerGtag);
+        window.removeEventListener('touchstart', triggerGtag);
+        window.removeEventListener('mousemove', triggerGtag);
+      }
+      window.addEventListener('scroll', triggerGtag, { passive: true, once: true });
+      window.addEventListener('click', triggerGtag, { once: true });
+      window.addEventListener('touchstart', triggerGtag, { passive: true, once: true });
+      window.addEventListener('mousemove', triggerGtag, { passive: true, once: true });
+      if ('requestIdleCallback' in window) {
+        requestIdleCallback(() => setTimeout(initGtag, 5000));
+      } else {
+        window.addEventListener('load', () => setTimeout(initGtag, 5000));
+      }
+    </script>
+    <script is:inline>
+      try {
+        const saved = localStorage.getItem('theme');
+        if (saved === 'light') {
+          document.documentElement.classList.remove('dark');
+          document.documentElement.classList.add('light');
+        } else {
+          document.documentElement.classList.add('dark');
+          document.documentElement.classList.remove('light');
+        }
+      } catch (e) {}
+    </script>
+    <slot name="head" />
   </head>
-  <body class="bg-white text-slate-900">
-    <Header />
-    <main>
-      <slot />
-    </main>
-    <Footer />
-    
-    <!-- Initialize AOS for scroll animations -->
+  <body class="w-full overflow-x-clip bg-[var(--color-bg)] text-[var(--color-text)] selection:bg-sky-700 selection:text-white">
+    <a href="#main-content" class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[9999] focus:px-4 focus:py-2 focus:bg-white focus:text-black focus:font-semibold focus:rounded-lg focus:shadow-xl">
+      Skip to content
+    </a>
+    <slot />
     <script>
-      import AOS from 'aos';
-      
-      AOS.init({
-        duration: 800,
-        easing: 'ease-out-quad',
-        once: false,
-        offset: 100,
-        delay: 0,
-      });
+      import Lenis from 'lenis';
+      import { initGlobalReveals } from '../scripts/reveal';
+
+      // Single Unified Lenis Instance for smooth natural scrolling
+      const isReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      let lenis: Lenis | null = null;
+
+      if (!isReduced && window.innerWidth >= 768) {
+        lenis = new Lenis({
+          lerp: 0.1,
+          smoothWheel: true,
+          autoRaf: true,
+        });
+        (window as any).lenis = lenis;
+      }
+
+      const init = () => {
+        initGlobalReveals();
+      };
+
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', init, { once: true });
+      } else {
+        init();
+      }
     </script>
   </body>
 </html>
-
-<style is:global>
-  :root {
-    --primary: #0f172a;
-    --secondary: #0369a1;
-    --accent: #06b6d4;
-    --neutral-light: #f8fafc;
-    --neutral-dark: #1e293b;
-  }
-
-  * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-
-  html {
-    scroll-behavior: smooth;
-  }
-
-  body {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    color: var(--neutral-dark);
-    background: white;
-  }
-
-  h1, h2, h3, h4, h5, h6 {
-    font-weight: 700;
-    letter-spacing: -0.02em;
-  }
-
-  h1 {
-    font-size: clamp(2.5rem, 8vw, 4rem);
-    line-height: 1.1;
-  }
-
-  h2 {
-    font-size: clamp(1.875rem, 5vw, 2.5rem);
-    line-height: 1.2;
-  }
-
-  h3 {
-    font-size: 1.5rem;
-  }
-
-  p {
-    line-height: 1.6;
-    color: #64748b;
-  }
-
-  a {
-    color: var(--accent);
-    text-decoration: none;
-    transition: all 0.3s ease;
-  }
-
-  .divider-subtle {
-    border-top: 1px solid #e2e8f0;
-  }
-</style>

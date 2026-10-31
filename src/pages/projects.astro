@@ -1,0 +1,165 @@
+---
+import MainLayout from '@/layouts/MainLayout.astro';
+import HeroIsland from '@/components/sections/hero/HeroIsland';
+import WorksWheel from '@/components/sections/works-wheel/WorksWheel';
+import Footer from '@/components/sections/footer/Footer.astro';
+import { PROJECTS } from '@/data/projects';
+---
+
+<MainLayout 
+  title="Our Projects - ANEXT" 
+  description="Explore the systems and architectures engineered by ANEXT."
+>
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "name": "Our Projects - ANEXT",
+    "url": "https://anext.dev/projects",
+    "description": "Explore the systems, architectures, and applications engineered by ANEXT.",
+    "mainEntity": {
+      "@type": "ItemList",
+      "itemListElement": PROJECTS.map((p, idx) => ({
+        "@type": "SoftwareApplication",
+        "position": idx + 1,
+        "name": p.title,
+        "applicationCategory": p.category,
+        "description": p.description,
+        "url": `https://anext.dev${p.href}`
+      }))
+    }
+  })} />
+  <main id="main-content" class="w-full relative overflow-x-hidden transition-colors duration-300">
+    <HeroIsland client:load variant="menu" floating={false} />
+
+    <section class="min-h-[75vh] sm:min-h-[80vh] flex flex-col items-center justify-center text-center px-4 pt-12 pb-16 relative z-10" id="projects-hero">
+      <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight wheel-title mb-3" id="projects-title">
+        <span class="m"><span class="w">Our</span></span>{" "}
+        <span class="m"><span class="w">Projects</span></span>
+      </h1>
+      <p class="text-sm sm:text-base wheel-muted font-mono max-w-lg mx-auto" id="projects-desc">
+        We build systems that grow with you.
+      </p>
+      <div class="mt-8 text-xs font-mono wheel-muted flex items-center gap-2 select-none" id="projects-scroll">
+        <span>Scroll down to explore</span>
+        <span class="animate-bounce">↓</span>
+      </div>
+    </section>
+
+    <!-- 3D WorksWheel (Pins at the idle ring, turns through projects, unpins cleanly to CTA) -->
+    <WorksWheel 
+      client:load 
+      items={PROJECTS} 
+      label="Our Projects" 
+    />
+
+    <!-- Final CTA Section before Footer -->
+    <section class="min-h-[65vh] sm:min-h-[75vh] py-24 sm:py-32 flex flex-col items-center justify-center text-center px-4 relative z-10">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-slate-200 dark:border-white/10 bg-slate-100 dark:bg-white/5 text-xs font-mono wheel-muted mb-4 backdrop-blur-sm">
+        <span>Ready to scale?</span>
+      </div>
+      <h2 class="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight wheel-title mb-4 max-w-2xl">
+        Explore What's Next
+      </h2>
+      <p class="text-sm sm:text-base wheel-muted font-mono max-w-md mx-auto mb-8 leading-relaxed">
+        Discover how ANEXT can engineer platforms and distributed systems tailored to your scale.
+      </p>
+      <div class="flex flex-wrap items-center justify-center gap-4">
+        <a
+          href="mailto:hello@anext.dev?subject=Schedule%20a%20Call"
+          class="inline-flex items-center justify-center px-6 py-3 rounded-full bg-[var(--color-text)] text-[var(--color-bg)] font-semibold text-xs sm:text-sm tracking-wide transition-all hover:scale-105 shadow-lg"
+        >
+          Schedule a Call
+        </a>
+        <a
+          href="mailto:hello@anext.dev?subject=Project%20Inquiry"
+          class="inline-flex items-center justify-center px-6 py-3 rounded-full bg-[var(--color-text)] text-[var(--color-bg)] font-semibold text-xs sm:text-sm tracking-wide transition-all hover:scale-105 shadow-lg"
+        >
+          Send a Message
+        </a>
+      </div>
+      <p class="mt-4 font-mono text-xs sm:text-sm wheel-muted text-center">
+        Or reach out directly at{" "}
+        <a
+          href="mailto:hello@anext.dev"
+          class="text-[var(--color-text)] underline underline-offset-4 hover:opacity-80 transition-opacity font-medium"
+        >
+          hello@anext.dev
+        </a>
+      </p>
+      <div class="mt-14 w-12 h-px bg-slate-200 dark:bg-white/10 mb-4"></div>
+      <p class="text-xs font-mono wheel-muted uppercase tracking-widest">
+        ANEXT Engineering &bull; Architecture & Distributed Systems
+      </p>
+    </section>
+  </main>
+
+  <Footer />
+</MainLayout>
+
+<style>
+  :global(#projects-title .m) {
+    display: inline-block;
+    overflow: hidden;
+    vertical-align: top;
+    padding-bottom: 0.12em;
+    margin-bottom: -0.12em;
+  }
+  :global(#projects-title .w) {
+    display: inline-block;
+    transform-origin: 0% 100%;
+    will-change: transform, opacity;
+  }
+</style>
+
+<script>
+  import gsap from 'gsap';
+
+  const title = document.getElementById('projects-title');
+  const desc = document.getElementById('projects-desc');
+  const scroll = document.getElementById('projects-scroll');
+
+  if (title) {
+    const wEls = Array.from(title.querySelectorAll<HTMLElement>(".w"));
+    const isReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches || window.innerWidth < 768;
+
+    if (isReduced) {
+      gsap.set(wEls, { yPercent: 0, opacity: 1 });
+      if (desc) gsap.set(desc, { opacity: 1, y: 0 });
+      if (scroll) gsap.set(scroll, { opacity: 1, y: 0 });
+    } else {
+      const tl = gsap.timeline({ defaults: { ease: 'power4.out' } });
+
+      tl.fromTo(wEls,
+        { yPercent: 100, rotate: 3, opacity: 0 },
+        {
+          yPercent: 0,
+          rotate: 0,
+          opacity: 1,
+          duration: 1.1,
+          stagger: 0.08,
+          delay: 0.05,
+        }
+      )
+      .fromTo(desc,
+        { opacity: 0, y: 16 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.8,
+          ease: 'power3.out',
+        },
+        "-=0.6"
+      )
+      .fromTo(scroll,
+        { opacity: 0, y: 12 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.6,
+          ease: 'power3.out',
+        },
+        "-=0.4"
+      );
+    }
+  }
+</script>

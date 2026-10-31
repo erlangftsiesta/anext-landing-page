@@ -1,0 +1,18 @@
+# ANEXT - Engineering Solutions
+
+> Connecting the Infinite. Robust, performant, and reliable engineering capabilities built for modern distributed systems.
+
+## Canonical Routes
+- [Home Page](https://anext.dev/): Overview of ANEXT capabilities, specialization areas, workflow process, tech stack, and customer verification.
+- [Our Projects](https://anext.dev/projects): Engineering projects, architectures, and systems delivered by ANEXT.
+- [Our Team](https://anext.dev/teams): Engineering collective, leadership, and operational specialists.
+
+## Core Specializations
+- Distributed Systems & High-Throughput APIs (Golang, NestJS, .NET, Laravel)
+- Modern Responsive Web Platforms (Astro, Next.js, React, Tailwind CSS)
+- Resilient Infrastructure & DevOps (Docker, Kubernetes, AWS, Google Cloud, Proxmox, MikroTik)
+- High-Performance Database Systems (PostgreSQL, MongoDB, Redis, MinIO)
+
+## Contact
+- Official Domain: https://anext.dev
+- Direct Inquiries: https://anext.dev/#contact

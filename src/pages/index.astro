@@ -1,23 +1,30 @@
 ---
-import MainLayout from '../layouts/MainLayout.astro';
-import Hero from '../components/Hero.astro';
-import TrustedBy from '../components/TrustedBy.astro';
-import OurServices from '../components/OurServices.astro';
-import Process from '../components/Process.astro';
-import TechStack from '../components/TechStack.astro';
-import About from '../components/About.astro';
-import Testimonials from '../components/Testimonials.astro';
-import FinalCTA from '../components/FinalCTA.astro';
+import MainLayout from '@/layouts/MainLayout.astro';
+import Hero from '@/components/sections/hero/Hero.astro';
+import TrustedBy from '@/components/sections/brand-partners/TrustedBy.astro';
+import WhatIsAnext from '@/components/sections/what-is-anext/WhatIsAnext.astro';
+import OurServices from '@/components/sections/services/OurServices.astro';
+import Process from '@/components/sections/process/Process.astro';
+import TechStack from '@/components/sections/tech-stack/TechStack.astro';
+import About from '@/components/sections/timeline/About.astro';
+import Testimonials from '@/components/sections/testimonials/Testimonials.astro';
+import FinalCTA from '@/components/sections/cta/FinalCTA.astro';
+import Footer from '@/components/sections/footer/Footer.astro';
 ---
 
-<!-- Updated import to use OurServices instead of Services -->
 <MainLayout>
-  <Hero />
-  <TrustedBy />
-  <OurServices />
-  <Process />
-  <TechStack />
-  <About />
-  <Testimonials />
-  <FinalCTA />
+  <main id="main-content">
+    <Hero />
+    <div class="flex justify-center md:mt-20 mt-8 mb-0">
+      <TrustedBy />
+    </div>
+    <WhatIsAnext />
+    <OurServices />
+    <Process />
+    <TechStack />
+    <About />
+    <Testimonials />
+    <FinalCTA />
+  </main>
+  <Footer />
 </MainLayout>

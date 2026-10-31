@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://anext.dev/sitemap.xml
+# Machine-readable context for AI and agentic systems
+# Reference: https://llmstxt.org
+# llms.txt: https://anext.dev/llms.txt
+# llms-full.txt: https://anext.dev/llms-full.txt

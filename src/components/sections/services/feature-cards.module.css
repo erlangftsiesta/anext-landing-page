@@ -1,0 +1,113 @@
+.card {
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.4);
+  border-radius: 24px;
+  display: flex;
+  flex-direction: column;
+}
+
+.card:hover .cardContainer,
+.card.hovered .cardContainer {
+  background: linear-gradient(to bottom, #141416, #09090b);
+  box-shadow: 0 20px 30px -10px rgba(0, 0, 0, 0.6);
+}
+
+.cardContent {
+  padding: 20px;
+}
+
+@media (min-width: 640px) {
+  .cardContent {
+    padding: 32px;
+  }
+}
+
+.cardContent p {
+  transition: max-height 0.3s ease-in-out 0s, opacity 0.2s ease-in-out, filter 0.2s ease-in-out 0s;
+  filter: blur(2px);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.cardContent:hover p,
+.cardContent.hovered p {
+  transition: max-height 0.3s ease-in-out 0.15s, opacity 0.2s ease-in-out, filter 0.2s ease-in-out 0s;
+  opacity: 1;
+  pointer-events: auto;
+  filter: blur(0);
+}
+
+.cardContainer {
+  background: linear-gradient(to bottom, #0e0e11, #08080a);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 24px;
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+  height: 100%;
+  width: 100%;
+  transition: background 0.3s ease-in-out, border-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.cardContainer:hover,
+.cardContainer.hovered {
+  border-color: rgba(255, 255, 255, 0.25);
+}
+
+.cardContainer::before {
+  content: "";
+  background-image: url(/misc/noise.png);
+  opacity: 0.15;
+  pointer-events: none;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  display: block;
+  border-radius: 24px;
+}
+
+.borderGlow {
+  padding: 1px;
+  border-radius: 24px;
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+  height: 100%;
+  width: 100%;
+  background: linear-gradient(to top, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.2));
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: destination-out;
+          mask-composite: exclude;
+  mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+}
+
+:global(html.light) .card {
+  box-shadow: 0 10px 25px -5px rgba(16, 40, 80, 0.08), 0 8px 10px -6px rgba(16, 40, 80, 0.04);
+}
+
+:global(html.light) .card:hover .cardContainer,
+:global(html.light) .card.hovered .cardContainer {
+  background: #FFFFFF;
+  box-shadow: 0 20px 30px -10px rgba(16, 40, 80, 0.12);
+}
+
+:global(html.light) .cardContainer {
+  background: #FFFFFF;
+  border: 1px solid #DFE2EB;
+}
+
+:global(html.light) .cardContainer:hover,
+:global(html.light) .cardContainer.hovered {
+  border-color: #102850;
+}
+
+:global(html.light) .cardContainer::before {
+  opacity: 0.03;
+}
+
+:global(html.light) .borderGlow {
+  background: linear-gradient(to top, #DFE2EB, #102850);
+}

@@ -1,43 +1,84 @@
-# Astro Starter Kit: Minimal
+## Tech Stack & Architecture
 
-```sh
-npm create astro@latest -- --template minimal
-```
+- **Framework**: [Astro 5](https://astro.build/) (Static Site Generation / Jamstack)
+- **UI & Islands**: [React 19](https://react.dev/), [TypeScript](https://www.typescriptlang.org/)
+- **Styling**: [Tailwind CSS v4](https://tailwindcss.com/)
+- **Animations & Physics**: Native HTML5 Canvas 2D, requestAnimationFrame throttled loops, [Motion](https://motion.dev/)
+- **Icons**: [Lucide React](https://lucide.dev/)
+- **SEO & Metadata**: JSON-LD Structured Data (`Corporation`), Open Graph, Twitter Cards, Semantic HTML5
+- **Islands Architecture**: Fully static HTML/CSS delivery with client-side React hydration only where needed (`client:visible`, `client:load`).
+- **Energy-Efficient Render Loop**: Animation canvas and scroll lerp loops sleep automatically when idle or outside the viewport via `IntersectionObserver`.
+- **Zero-Dependency Media**: Modern WebP assets with responsive dimensions and lossless compression.
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+---
 
-## 🚀 Project Structure
+---
 
-Inside of your Astro project, you'll see the following folders and files:
+## Project Structure
 
 ```text
-/
-├── public/
+anext-landing-page/
+├── public/                 # Static assets (favicons, logos, optimized webp)
 ├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
+│   ├── components/         # Reusable Astro & React island components
+│   │   ├── Header.astro    # Navigation header
+│   │   ├── TechStack.astro # Interactive tech stack section
+│   │   └── ...
+│   ├── data/               # Centralized data stores (menu.ts, projects.ts, tech-stack.ts)
+│   ├── layouts/            # Global HTML shell & SEO metadata (MainLayout.astro)
+│   ├── pages/              # Static page routes
+│   │   ├── index.astro     # Main landing page
+│   │   ├── teams.astro     # Leadership & engineering team showcase
+│   │   └── projects.astro  # Interactive 3D WorksWheel projects showcase
+│   └── styles/             # Global CSS and Tailwind directives
+├── astro.config.mjs        # Astro configuration & integrations
+└── tsconfig.json           # TypeScript configuration
 ```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+---
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+## Getting Started
 
-Any static assets, like images, can be placed in the `public/` directory.
+### Prerequisites
+- **Node.js**: v20+ (tested on Node v24 LTS)
+- **Package Manager**: npm
 
-## 🧞 Commands
+### Installation
+Clone the repository and install dependencies:
+```bash
+git clone https://github.com/arhylsion/anext-landing-page.git
+cd anext-landing-page
+npm install
+```
 
-All commands are run from the root of the project, from a terminal:
+### Development
+Start the local development server with hot-module replacement (HMR):
+```bash
+npm run dev
+```
+Navigate to `http://localhost:4321`.
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+### Production Build & Preview
+Generate the production-ready static output into `./dist/`:
+```bash
+npm run build
+```
 
-## 👀 Want to learn more?
+Preview the static production build locally:
+```bash
+npm run preview
+```
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+### Type Checking & Diagnostics
+Run full Astro and TypeScript diagnostic validation:
+```bash
+npm run check
+```
+Or TypeScript check only:
+```bash
+npm run typecheck
+```
+
+
+
+

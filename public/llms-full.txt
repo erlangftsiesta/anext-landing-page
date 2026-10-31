@@ -1,0 +1,34 @@
+# ANEXT Full Machine-Readable Knowledge Base
+
+## System Overview
+ANEXT is an engineering studio delivering robust digital systems, scalable cloud infrastructure, and enterprise web applications.
+
+## Services & Solutions
+1. Distributed Architecture: Event-driven systems, microservices, gRPC, and REST APIs engineered for low latency and high availability.
+2. Web Engineering: Fullstack static and dynamic web platforms utilizing Astro, Next.js, and modern React architectures with 100% Core Web Vitals compliance.
+3. Cloud & Infrastructure: Containerization, Kubernetes orchestration, CI/CD automation, server virtualization with Proxmox, and hybrid on-premise cloud deployments.
+4. Database Architecture: Data modeling, relational and document stores (PostgreSQL, MongoDB), caching layers (Redis), and distributed object storage (MinIO).
+
+## Engineering Process
+1. Discovery & Strategy: Requirements mapping and domain-driven architectural planning.
+2. Architecture Design: Fault-tolerant design, schema definition, and network topology.
+3. Iterative Engineering: Clean code, strict TypeScript typing, modular component systems.
+4. Production Deployment & Telemetry: Zero-downtime releases, monitoring, and scale optimization.
+
+## Team Structure
+- President Director: Erlangga Muhamad Hafiz (Vision, innovation strategy, and long-term tech growth)
+- General Manager: Nadhin Galuh Ekania W. (Operations and strategic delivery)
+- Head of Finance: Ratu Natifha Alena (Financial governance and resource allocation)
+- Senior Software Engineer: Ichwan Nur Fitrah (Architecture, distributed systems, developer mentoring)
+- Fullstack Engineer: Aditya Kurnia (Web systems, backend integration, performant apps)
+- UI/UX & QA: Farhan Aditya (Usability evaluation, interface design, quality assurance)
+- Marketing: Wysis Hero (Brand presence and market outreach)
+- Content Editor: Muhamad Satria Mandala (Technical content and communications)
+- Social Media Admin: Muhamad Arridho (Audience engagement and community presence)
+
+## Endpoints
+- https://anext.dev/
+- https://anext.dev/projects
+- https://anext.dev/teams
+- https://anext.dev/sitemap.xml
+- https://anext.dev/robots.txt
